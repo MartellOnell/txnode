@@ -18,6 +18,16 @@ var (
 	ErrTransactionArgsMismatch = errors.New("transaction args mismatch")
 )
 
+func New() *TxNode {
+	return &TxNode{
+		isStart: true,
+	}
+}
+
+func (txn *TxNode) UnsetEnd() {
+	txn.isEnd = false
+}
+
 func (txn *TxNode) SetEnd() {
 	txn.isEnd = true
 }
