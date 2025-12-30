@@ -28,14 +28,26 @@ func New() *TxNode {
 	}
 }
 
+// IsEnd return TxNode.isEnd or false if txn == nil
+func (txn *TxNode) IsEnd() bool {
+	if txn == nil {
+		return false
+	}
+	return txn.isEnd
+}
+
 // UnsetEnd marks this node as not being the end of the transaction chain.
 func (txn *TxNode) UnsetEnd() {
-	txn.isEnd = false
+	if txn != nil {
+		txn.isEnd = false
+	}
 }
 
 // SetEnd marks this node as the end of the transaction chain.
 func (txn *TxNode) SetEnd() {
-	txn.isEnd = true
+	if txn != nil {
+		txn.isEnd = true
+	}
 }
 
 // PrepareQuery prepares a SQL statement. It begins a transaction on first call
